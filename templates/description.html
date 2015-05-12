@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="/static/conf/annotation.css" type="text/css" rel="stylesheet">
+    <title>Questionnaire</title>
+    <link href="/static/conf/button.css" type="text/css" rel="stylesheet">
+    <link href="/static/conf/annotation.css" type="text/css" rel="stylesheet">
+    <!-- global variables: current task id, current query -->
+    <script type="text/javascript">
+        currentTaskID = "{{ task.task_id }}";
+        initQuery = "{{ initQuery }}";
+   </script>
+   	<script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery-min.js"></script>
+	<script type="text/javascript" src="/static/conf/wc_preprocess.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.bgpos.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.reveal.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.raty.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.raty.min.js"></script>
+    <script type="text/javascript" src="/static/conf/anno_log.js"></script>
+
+</head>
+<body>
+<div class="annotation_header">
+<div>
+    <h2>请用自己的语言复述一下查询任务:</h2>
+</div>
+</div>
+<div class="annotation_list">
+    <div class="annotation_cell">
+        <textarea name="answer" id="answer">
+        </textarea>
+    </div>
+</div>
+<div class="annotation_footer">
+    <button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="description_button_on_click();">开始查询</button>
+</div>
+</body>
+</html>

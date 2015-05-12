@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="/static/conf/annotation.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery-min.js"></script>
+	<script type="text/javascript" src="/static/conf/wc_preprocess.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.bgpos.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.reveal.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.raty.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.raty.min.js"></script>
+    <script type="text/javascript" src="/static/conf/anno_log.js"></script>
+    <title>All tasks</title>
+</head>
+<body>
+
+<div class="annotation_header">
+<h1 align="center">清华大学计算机系信息检索组</h1>
+<h1 align="center"> 欢迎您！</h1>
+<script>
+    var strcookie=document.cookie;
+    var arrcookie=strcookie.split("; ");
+    var sid = arrcookie[0].split('=')[1]
+
+    document.write('<p align="center"><font style="font-size:16px" color="red">当前标注人员账号为'+sid+'</font></p>')
+</script>
+
+<p align="center" style="font-size:16px" color="red">当前共有{{ tasknum }}个标注任务</p>
+</div>
+<div class="annotation_list">
+{% for item in tasks %}
+<div class="annotation_cell">
+<img class="check" src="/static/conf/img/check.jpg">
+<div>
+<h2> 第 {{ forloop.counter }} 个标注任务</h2>
+    <p>任务描述：{{ item.content }}</p>
+    <p>初始查询： {{ item.init_query }}</p>
+    <a class="annotation_link" href ='/description/{{ item.task_id }}/{{ item.init_query }}/' target="_blank">点击这里开始</a>
+</div>
+</div>
+{% endfor %}
+</div>
+
+</body>
+</html>

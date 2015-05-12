@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+    <link href="/static/conf/button.css" type="text/css" rel="stylesheet">
+    <link href="/static/conf/annotation.css" type="text/css" rel="stylesheet">
+    <!-- global variables: current task id, current query -->
+    <script type="text/javascript">
+        currentTaskID = "{{ taskid }}";
+        currentQuery = "{{ query }}"
+   </script>
+   	<script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery-min.js"></script>
+	<script type="text/javascript" src="/static/conf/wc_preprocess.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.bgpos.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.reveal.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.raty.js"></script>
+	<script type="text/javascript" src="/static/conf/jquery.raty.min.js"></script>
+    <script type="text/javascript" src="/static/conf/anno_log.js"></script>
+</head>
+<body>
+<div class="annotation_header">
+<h1>搜索结果标注</h1>
+<p>在当前搜索任务中，您总共提交了{{ querynum }} 个查询，请依据每一个查询，对搜索结果进行标注。</p>
+    <p style="color: red">标注说明：</p>
+<p style="color: red">1. 在下面的查询列表中，依次点击每一个查询，之后将看到您在提交该查询时点击的所有搜索结果，请针对“查询”和“搜索结果”，标注您在阅读该结果时的“收获”</p>
+<p style="color: red">2. 在标注的过程中，如果不记得结果的具体内容，您可以重新点击该结果，进入相关的页面进行回顾。</p>
+<p style="color: red">3. 最后，请告诉我们您在整个搜索会话过程中的满意程度。1分为非常不满意；5分为非常满意。</p>
+
+</div>
+<div class="annotation_list">
+<h2>提交查询列表</h2>
+    {%  for q in querylist %}
+    <div class="annotation_cell">
+        <img class="check" src="/static/conf/img/check.jpg">
+        <div><h3><a class="annotation_link" href="/annotation/{{ taskid }}/{{ q }}/" target="_blank">{{ q }}</a></h3></div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="annotation_footer">
+    <div>
+        <div>
+            当前任务对搜索结果的满意程度:
+        </div>
+        <div id="session_annotation"></div>
+        <div><p></p></div>
+    </div>
+    <button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="session_over_button_on_click();">浏览完成</button>
+</div></body>
+</html>

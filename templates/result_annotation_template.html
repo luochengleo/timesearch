@@ -1,0 +1,11 @@
+<div style="width: 750px; overflow: hidden">
+    {{ result | safe}}
+    <div style="margin-left:50px; float:left; width:100px">
+        <div>收获：</div>
+        <div class="utility_annotation" id="star_{{ id }}" ></div>
+        <script type="text/javascript">
+            $("#star_{{ id }}").raty('set', {number: 4, starOn: "/static/conf/img/star-on.png", starOff: "/static/conf/img/star-off.png"});
+            $("#star_{{ id }}").raty('score', 1);
+        </script>
+    </div>
+</div>
