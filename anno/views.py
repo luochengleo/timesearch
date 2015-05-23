@@ -29,11 +29,9 @@ def current_datetime(request):
     return HttpResponse(html)
 
 def search(request,taskid,query,pageid):
-
     # print 'view search', query
     srh = SearchResultHub()
     query = urllib.unquote(query)
-
    # query = query.decode('cp936','ignore').decode('utf8')
 
     # print urllib.quote(query)
