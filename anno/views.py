@@ -1,6 +1,7 @@
 #coding=utf8
 
 from django.shortcuts import render
+from django.shortcuts import render_to_response
 from django.http import HttpResponse
 import datetime
 from Utils.SearchResultHub import SearchResultHub
@@ -61,6 +62,9 @@ def train(request,userid):
 def validate(request,taskid):
     html = '<html><body> It is the '+taskid +' task. </body></html>'
     return HttpResponse(html)
+
+def slider(request):
+    return render_to_response('templates/seekbar.html')
 
 def login(request):
     return HttpResponse(open('templates/login.html').read())

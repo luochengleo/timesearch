@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Seek Bar</title>
+    <style>
+	#seekbar
+	{
+	    margin:auto;
+	}
+    </style>
+</head>
+<body>
+    <div id = "seekbar">
+    </div>
+    <span id = "val"></div>
+    <script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script>
+	$(document).ready(function(){
+	    $('.seekbar').slider(
+	    {
+		min:0,
+		max:5,
+		step:1,
+		change:showValue
+	    });
+	    function showValue(event, ui){
+		$('#val').html(ui.value);
+	    }
+	});
+    </script>
+</body>
+</html>
