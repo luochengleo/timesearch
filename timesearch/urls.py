@@ -17,6 +17,7 @@ from anno.views import log_questionnaire
 from anno.views import questionnaire
 from anno.views import log_query_satisfaction
 from anno.views import description
+from anno.views import *
 
 urlpatterns = patterns('',
     # Examples:
@@ -24,14 +25,14 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     # url(r'^admin/', include(admin.site.urls)),
     (r'^hello/$',hello),
-    (r'^time/',current_datetime),
     (r'^search/(\d{1,2})/(.*?)/(\d{1,2})/$',search),
     (r'^train/(\d{1,2})/$',train),
     (r'^validate/(\d{1,2})/$',validate),
     (r'^login/$',login),
-    (r'^tasks/(\d{10})/$',tasks),
+    (r'^tasks/(\d{10})/(.*?)/$',tasks),
     (r'^annolist/(\d{1,2})/$',annolist),
     (r'^annotation/(\d{1,2})/(.*?)/$', annotation),
+    (r'^taskreview/(\d{1,2})/$', taskreview),
     (r'^questionnaire/(\d{1,2})/$', questionnaire),
     (r'^description/(\d{1,2})/(.*?)/$', description),
     (r'^LogService/$', log),
