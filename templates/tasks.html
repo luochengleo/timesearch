@@ -19,11 +19,60 @@
 <h1 align="center">清华大学计算机系信息检索组</h1>
 <h1 align="center"> 欢迎您！</h1>
 <script>
+    function getCookieVal(offset) {
+    var endstr = document.cookie.indexOf(";", offset);
+    if (endstr == -1) {
+        endstr = document.cookie.length;
+    }
+    return unescape(document.cookie.substring(offset, endstr));
+}
+
+// primary function to retrieve cookie by name
+function getCookie(name) {
+    var arg = name + "=";
+    var alen = arg.length;
+    var clen = document.cookie.length;
+    var i = 0;
+    while (i < clen) {
+        var j = i + alen;
+        if (document.cookie.substring(i, j) == arg) {
+            return getCookieVal(j);
+        }
+        i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) break;
+    }
+    return null;
+}
+
+// store cookie value with optional details as needed
+function setCookie(name, value, expires, path, domain, secure) {
+    document.cookie = name + "=" + escape(value) +
+            ((expires) ? "; expires=" + expires : "") +
+            ((path) ? "; path=" + path : "") +
+            ((domain) ? "; domain=" + domain : "") +
+            ((secure) ? "; secure" : "");
+}
+
+// remove the cookie by setting ancient expiration date
+function deleteCookie(name, path, domain) {
+    if (getCookie(name)) {
+        document.cookie = name + "=" +
+                ((path) ? "; path=" + path : "") +
+                ((domain) ? "; domain=" + domain : "") +
+                "; expires=Thu, 01-Jan-1970 00:00:01 GMT";
+
+    }
+}
+
+    function resetTime(){
+        setCookie('time',100,'','/','','');
+    }
     var strcookie=document.cookie;
     var arrcookie=strcookie.split("; ");
     var sid = arrcookie[0].split('=')[1]
 
     document.write('<p align="center"><font style="font-size:16px" color="red">当前标注人员账号为'+sid+'</font></p>')
+    document.write('<p align="center"><font style="font-size:16px" color="red">cookie'+arrcookie+'</font></p>')
 </script>
 
 <p align="center" style="font-size:16px" color="red">当前共有{{ tasknum }}个标注任务</p>
@@ -36,8 +85,9 @@
 <h2> 第 {{ forloop.counter }} 个标注任务</h2>
     <p>任务描述：{{ item.content }}</p>
     <p>初始查询： {{ item.init_query }}</p>
-    <a class="annotation_link" href ='/description/{{ item.task_id }}/{{ item.init_query }}/' target="_blank">点击这里开始</a>
+    <a class="annotation_link" href ='/search/{{ item.task_id }}/{{ item.init_query }}/1/' target="_blank" onclick="resetTime();">点击这里开始</a>
 </div>
+
 </div>
 {% endfor %}
 </div>

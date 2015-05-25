@@ -30,6 +30,10 @@ def current_datetime(request):
     return HttpResponse(html)
 
 def search(request,taskid,query,pageid):
+    try:
+        expType = request.COOKIES['expType']
+    except:
+        return HttpResponse('ERROR: UNKNOWN expType')
     # print 'view search', query
     srh = SearchResultHub()
     query = urllib.unquote(query)
@@ -39,8 +43,10 @@ def search(request,taskid,query,pageid):
     results = srh.getResult(query, 10*(int(pageid)-1), 10)
     results_count = srh.getCount(query)
     max_pageid = results_count / 10
-
-    t = template.Template(open('templates/out.html').read())
+    if expType=='exp':
+        t = template.Template(open('templates/outexplicit.html').read())
+    else:
+        t = template.Template(open('templates/outimplicit.html').read())
     next_pageid = ''
     if int(pageid) < max_pageid:
         next_pageid = str(int(pageid)+1)
@@ -64,12 +70,12 @@ def validate(request,taskid):
     return HttpResponse(html)
 
 def slider(request):
-    return render_to_response('templates/seekbar.html')
+    return HttpResponse(open('templates/seekbar.html').read())
 
 def login(request):
     return HttpResponse(open('templates/login.html').read())
 
-def tasks(request, sID):
+def tasks(request, sID,expType):
     tlist = list(Task.objects.filter(task_id__lte=12))
     if sID == '2013310564':
         tlist = [Task.objects.get(task_id=13)]
@@ -86,6 +92,8 @@ def tasks(request, sID):
 
     respon = HttpResponse(html.render(c))
     respon.set_cookie('studentID', value=sID, max_age=None, expires=None, path='/', domain=None, secure=None)
+    respon.set_cookie('expType', value=expType, max_age=None, expires=None, path='/', domain=None, secure=None)
+
     return respon
 
 def annolist(request, taskid):
@@ -129,6 +137,22 @@ def description(request, task_id, init_query):
     return HttpResponse(t.render(c))
 
 
+def taskreview(request,taskid):
+
+    try:
+        studentID = request.COOKIES['studentID']
+    except:
+        return HttpResponse('ERROR: UNKNOWN STUDENT ID')
+    lh = LogHub()
+    currTask = Task.objects.get(task_id =int(taskid))
+    query = currTask.init_query
+    results = lh.getClickedResults(studentID, taskid, query)
+    # print 'len result:', len(results)
+    t = template.Template(open('templates/taskreview.html').read())
+    c = template.Context({'resultlist': [r.content for r in results],
+                          'taskid': taskid,
+                          'query': query})
+    return HttpResponse(t.render(c))
 @csrf_exempt
 def log(request):
     message = urllib.unquote(request.POST[u'message']).encode('utf8')

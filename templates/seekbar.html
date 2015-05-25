@@ -5,17 +5,24 @@
 	#seekbar
 	{
 	    margin:20px;
+        width:400px;
 	}
     </style>
-    <link rel = "stylesheet" href= "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
+    <link rel = "stylesheet" href= "/static/css/jquery-ui.css" />
 </head>
 <body>
     <div id = "seekbar"> </div>
+    <span>Time</span>
     <span id = "val">0</span>
+    <button onclick="">Submit</button>
     <script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery.min.2.1.4.js"></script>
+    <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
     <script>
+        function submitTime(){
+
+        }
+
 	$(document).ready(function(){
 	    $('#seekbar').slider({
 		min:0,
@@ -24,7 +31,10 @@
 		change:showValue
 	    });
 	    function showValue(event, ui){
-		$('#val').html(ui.value);
+            var time =ui.value;
+            var second = time % 60;
+            var minute = (time-second)/60;
+		    $('#val').html(minute+'分'+second+'秒');
 	    }
 	    console.log('here');
 	});

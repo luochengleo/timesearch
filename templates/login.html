@@ -19,7 +19,10 @@
                 return;
             }
             else if ((pass.value == "a") && (!isNaN(username.value))) {
-                window.location.href='/tasks/'+username.value
+                obj=document.getElementById("tasktype")
+                 var index = obj.selectedIndex;
+                var expType = obj.options[index].value;
+                window.location.href='/tasks/'+username.value+'/'+expType
                 return;
             }
             else {
@@ -37,6 +40,15 @@
 
 <form align=center>
     <table align="center">
+        <tr align="center">
+            <td>选择实验类型：</td>
+            <td>
+         <select align="center" style="width:130px" id="tasktype">
+                                    <option value="exp">显式实验</option>
+                                    <option value="imp">隐式实验</option>
+                                </select>
+            </td>
+        </tr>
         <tr align=center>
             <td>用户名:</td>
             <td><input type="text" name="username" id="username"></td>
