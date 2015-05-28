@@ -1,3 +1,4 @@
+static/audio/*
 .idea
 db.sqlite3
 
