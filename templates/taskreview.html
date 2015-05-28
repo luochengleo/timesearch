@@ -3935,11 +3935,13 @@
 <div class="annotation_header">
     <h1>搜索花费时间估计</h1>
     <p style="color: orangered; font-size:16pt">标注说明：请根据你在实验过程中的感觉，估计你完成当前任务所花费的时间。</p>
+    <p style="color: #080300; font-size:14pt">我们为你提供了一个十分钟长的时间轴，拖动时间轴上的标尺，时间会随之变化。点击“确认”提交你估计的值。</p>
 
  <div id = "seekbar"> </div>
     <span>花费时间</span>
-    <span id = "val">0</span>
+    <span id = "val">0分0秒</span>
     <button onclick="">确认</button>
+    <label for="meeting">约会日期：</label><input id="meeting" type="time" />
     <script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/static/jquery.min.2.1.4.js"></script>
     <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
@@ -3951,7 +3953,7 @@
 	$(document).ready(function(){
 	    $('#seekbar').slider({
 		min:0,
-		max:300,
+		max:600,
 		step:1,
 		change:showValue
 	    });

@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="/static/conf/jquery.raty.js"></script>
 	<script type="text/javascript" src="/static/conf/jquery.raty.min.js"></script>
     <script type="text/javascript" src="/static/conf/anno_log.js"></script>
+    <script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>
     <title>All tasks</title>
 </head>
 <body>
@@ -65,7 +66,7 @@ function deleteCookie(name, path, domain) {
 }
 
     function resetTime(){
-        setCookie('time',100,'','/','','');
+        setCookie('time',0,'','/','','');
     }
     var strcookie=document.cookie;
     var arrcookie=strcookie.split("; ");
@@ -75,16 +76,19 @@ function deleteCookie(name, path, domain) {
     document.write('<p align="center"><font style="font-size:16px" color="red">cookie'+arrcookie+'</font></p>')
 </script>
 
-<p align="center" style="font-size:16px" color="red">当前共有{{ tasknum }}个标注任务</p>
+<p align="center" style="font-size:16px" color="red">当前共有{{ tasknum }}个查询任务</p>
+    <p align="center" style="font-size:16px" color="red">对于每一个查询任务，你需要用一个查询寻找相关的信息。请注意，在开始查询前，请听一段录音，帮助你理解查询背后具体的信息需求。</p>
 </div>
 <div class="annotation_list">
 {% for item in tasks %}
 <div class="annotation_cell">
 <img class="check" src="/static/conf/img/check.jpg">
 <div>
-<h2> 第 {{ forloop.counter }} 个标注任务</h2>
-    <p>任务描述：{{ item.content }}</p>
-    <p>初始查询： {{ item.init_query }}</p>
+<h2> 第 {{ forloop.counter }} 个搜索任务</h2>
+    <p>查询： {{ item.init_query }}</p>
+    <span>任务描述：</span><span><audio  controls="controls">
+  <source src="/static/audio/{{ item.audiofilename }}" type="audio/mp3" />
+    </audio></span>
     <a class="annotation_link" href ='/search/{{ item.task_id }}/{{ item.init_query }}/1/' target="_blank" onclick="resetTime();">点击这里开始</a>
 </div>
 

@@ -12,21 +12,23 @@
     <link rel="dns-prefetch" href="http://img01.sogoucdn.com/">
     <link rel="dns-prefetch" href="http://img02.sogoucdn.com/">
     <link rel="dns-prefetch" href="http://img03.sogoucdn.com/">
-    <link rel="dns-prefetch" href="http://img04.sogoucdn.com/"> <link rel="shortcut icon" href="http://www.sogou.c../../../../static/images/logo/new/favicon.ico?nv=1&v=2" type="image/x-icon">
+    <link rel="dns-prefetch" href="http://img04.sogoucdn.com/">
+    <link rel="shortcut icon" href="http://www.sogou.c../../../../static/images/logo/new/favicon.ico?nv=1&v=2"
+          type="image/x-icon">
     <link href="/static/conf/button.css" type="text/css" rel="stylesheet">
     <!-- global variables: current task id, current query -->
     <script type="text/javascript">
         currentTaskID = "{{ taskid }}";
         currentQuery = "{{ query }}";
         currentPageID = "{{ pageid }}";
-   </script>
-   	<script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="/static/conf/jquery-min.js"></script>
-	<script type="text/javascript" src="/static/conf/wc_preprocess.js"></script>
-	<script type="text/javascript" src="/static/conf/jquery.bgpos.js"></script>
-	<script type="text/javascript" src="/static/conf/jquery.reveal.js"></script>
-	<script type="text/javascript" src="/static/conf/jquery.raty.js"></script>
-	<script type="text/javascript" src="/static/conf/jquery.raty.min.js"></script>
+    </script>
+    <script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/conf/jquery-min.js"></script>
+    <script type="text/javascript" src="/static/conf/wc_preprocess.js"></script>
+    <script type="text/javascript" src="/static/conf/jquery.bgpos.js"></script>
+    <script type="text/javascript" src="/static/conf/jquery.reveal.js"></script>
+    <script type="text/javascript" src="/static/conf/jquery.raty.js"></script>
+    <script type="text/javascript" src="/static/conf/jquery.raty.min.js"></script>
     <script type="text/javascript" src="/static/conf/wc_log.js"></script>
     <title>搜狗搜索</title>
 
@@ -168,31 +170,42 @@
             z-index: 10;
             position: relative;
             padding-top: 20px;
-            padding-top: 21 px\9
+            padding-top: 21px \9
         }
 
-	.viz{
-	visibility:hidden;
-	}
+        .viz {
+            visibility: hidden;
+        }
+        .viznone{
+            display:none;
+                        visibility: hidden;
 
-	.timer
-	{
-	    height:20px;
-	    width:200px;
-	    background:#E83434;
-	    margin-top:5px;
-	    margin-left:200px;
-	    position:absolute;
-        display:none;
-	}
+        }
 
-	.reminder
-	{
-	    font-size:20px;
-	    position:absolute;
-	    left:250px;
-        display:none;
-	}
+        .timer {
+            height: 20px;
+            width: 200px;
+            background: #60e83e;
+            margin-top: 5px;
+            margin-left: 200px;
+            position: absolute;
+        }
+
+        .reminder {
+            top: 25px;
+            font-size: 20px;
+            position: absolute;
+            left: 250px;
+            font-size: 18px;
+        }
+        .remindernone {
+            top: 25px;
+            font-size: 20px;
+            position: absolute;
+            left: 250px;
+            font-size: 18px;
+            display: none;
+        }
 
         .logo {
             width: 123px;
@@ -275,7 +288,7 @@
             *padding-right: 8px;
             display: inline-block;
             background: url(../../../../static/images/arr.gif) no-repeat 100% 5px;
-            background-position: 100% 3 px\9
+            background-position: 100% 3px \9
         }
 
         .popMore {
@@ -370,9 +383,9 @@
             outline: 0;
             padding: 4px 30px 4px 4px;
             height: 20px;
-            padding: 0 30px 0 4 px\9;
-            height: 29 px\9;
-            line-height: 29 px\9;
+            padding: 0 30px 0 4px \9;
+            height: 29px \9;
+            line-height: 29px \9;
             _height: 27px;
             _line-height: 27px;
             border: 1px solid #fff;
@@ -479,9 +492,9 @@
         .hsform .query {
             padding: 2px 0 0 4px;
             height: 19px;
-            padding: 0 0 0 4 px\9;
-            height: 22 px\9;
-            line-height: 22 px\9;
+            padding: 0 0 0 4px \9;
+            height: 22px \9;
+            line-height: 22px \9;
             _height: 20px;
             _line-height: 20px;
             border: 1px solid #fff
@@ -505,7 +518,7 @@
 
         .top-hintBox {
             padding: 0 0 10px 35px;
-            padding: 0 0 9px 35 px\9;
+            padding: 0 0 9px 35px \9;
             width: 900px
         }
 
@@ -659,9 +672,9 @@
         .tit_img {
             vertical-align: middle;
             margin-left: 4px;
-            vertical-align: baseline\9;
-            position: relative\9;
-            top: 1 px\9
+            vertical-align: baseline \9;
+            position: relative \9;
+            top: 1px \9
         }
 
         .tit-ico {
@@ -673,8 +686,8 @@
         .vr_authico {
             vertical-align: middle;
             margin-left: 4px;
-            vertical-align: baseline\9;
-            top: 2 px\9
+            vertical-align: baseline \9;
+            top: 2px \9
         }
 
         .rb .vrTitle, .rb .pt, .rb .vrt {
@@ -741,7 +754,8 @@
             margin-left: 4px
         }
 
-        @media screen and (min-width: 0 \0) {
+        @media screen and (min-width: 0 \0
+        ) {
             .fb .fb-laud {
                 margin-top: 3px
             }
@@ -1078,7 +1092,7 @@
             text-decoration: none;
             margin-right: 10px;
             display: inline-block;
-            margin-right: 7 px\9
+            margin-right: 7px \9
         }
 
         .min-link a:hover {
@@ -1088,7 +1102,7 @@
         .min-link span {
             margin-right: 10px;
             color: #e4e4e4;
-            margin-right: 7 px\9
+            margin-right: 7px \9
         }
 
         .min-link i {
@@ -1697,16 +1711,16 @@
         }
 
         .bar-list {
-            margin-bottom: 1 px\9
+            margin-bottom: 1px \9
         }
 
         .bar-list li {
             line-height: 22px;
             padding-bottom: 5px;
-            padding-bottom: 4 px\9;
+            padding-bottom: 4px \9;
             overflow: hidden;
             padding-top: 0;
-            padding-top: 1 px\9
+            padding-top: 1px \9
         }
 
         .bar-list li span {
@@ -1738,7 +1752,7 @@
             margin-top: 1px;
             margin-top: 0 \9;
             margin-left: 4px;
-            line-height: 15 px\9;
+            line-height: 15px \9;
             *line-height: 16px;
             font-size: 12px;
             overflow: hidden;
@@ -1828,7 +1842,7 @@
 
         .str_info_div {
             overflow: hidden;
-            padding-top: 1 px\9
+            padding-top: 1px \9
         }
 
         .enc-list {
@@ -1970,7 +1984,7 @@
 
         .par {
             padding-right: 12px;
-            padding-right: 10 px\9
+            padding-right: 10px \9
         }
 
         .par i {
@@ -2097,7 +2111,7 @@
         .sy-sec input {
             border: 1px solid #c2c2c2;
             height: 26px;
-            line-height: 26 px\9;
+            line-height: 26px \9;
             width: 188px;
             padding: 0 5px;
             float: left;
@@ -2117,7 +2131,7 @@
             background-color: #f9f9f9;
             text-decoration: none;
             line-height: 26px;
-            line-height: 27 px\9;
+            line-height: 27px \9;
             -webkit-box-shadow: 2px 0 rgba(255, 255, 255, .1);
             box-shadow: 2px 0 rgba(255, 255, 255, .1)
         }
@@ -2215,8 +2229,8 @@
             text-decoration: none;
             padding: 0 9px;
             line-height: 23px;
-            line-height: 24 px\0;
-            line-height: 24 px\9;
+            line-height: 24px \0;
+            line-height: 24px \9;
             margin-right: 10px;
             zoom: 1;
             float: left;
@@ -2237,7 +2251,7 @@
             border-left-color: #94c1ff;
             margin-bottom: 1px;
             margin-right: -1px;
-            margin-right: -2 px\0;
+            margin-right: -2px \0;
             *margin-right: -2px;
             overflow: hidden;
             float: left;
@@ -2268,7 +2282,7 @@
 
         .str_author a, .str_author span {
             margin-right: 14px;
-            margin-right: 13 px\9
+            margin-right: 13px \9
         }
 
         .str_author a:hover {
@@ -2302,7 +2316,7 @@
             display: inline-block;
             padding: 0 7px;
             line-height: 22px;
-            line-height: 24 px\0;
+            line-height: 24px \0;
             *line-height: 24px
         }
 
@@ -2515,7 +2529,7 @@
             display: inline-block;
             padding: 0 7px;
             line-height: 22px;
-            line-height: 24 px\0;
+            line-height: 24px \0;
             *line-height: 24px;
             height: 22px;
             border: 1px solid #c4ddff;
@@ -2545,7 +2559,7 @@
             z-index: -1;
             top: 2px;
             *top: -2px;
-            line-height: 17 px\9
+            line-height: 17px \9
         }
 
         .str-list-v4 .str-play-box {
@@ -2782,7 +2796,7 @@
             display: inline-block;
             padding-right: 12px;
             background: url(../../../../static/images/arrow.gif) no-repeat 100% 7px;
-            background: url(../../../../static/images/arrow.gif) no-repeat 100% 5 px\9;
+            background: url(../../../../static/images/arrow.gif) no-repeat 100% 5px \9;
             *background: url(../../../../static/images/arrow.gif) no-repeat 100% 7px;
             color: #77c;
             font-size: 13px;
@@ -2795,7 +2809,7 @@
 
         .mainHide a {
             background-position: 100% -22px;
-            background-position: 100% -23 px\9
+            background-position: 100% -23px \9
         }
 
         .selectBox {
@@ -2875,9 +2889,9 @@
         .vr_authico {
             vertical-align: middle;
             margin-left: 4px;
-            vertical-align: baseline\9;
-            position: relative\9;
-            top: 2 px\9
+            vertical-align: baseline \9;
+            position: relative \9;
+            top: 2px \9
         }
 
         .tit-ico {
@@ -3179,7 +3193,7 @@
             text-decoration: none;
             height: 18px;
             line-height: 18px;
-            line-height: 20 px\9;
+            line-height: 20px \9;
             overflow: hidden;
             margin-bottom: 5px
         }
@@ -3232,7 +3246,7 @@
             text-decoration: none;
             margin-right: 10px;
             display: inline-block;
-            margin-right: 7 px\9
+            margin-right: 7px \9
         }
 
         .min-link a:hover {
@@ -3242,7 +3256,7 @@
         .min-link span {
             margin-right: 10px;
             color: #e4e4e4;
-            margin-right: 7 px\9
+            margin-right: 7px \9
         }
 
         .min-link i {
@@ -3261,13 +3275,13 @@
             text-decoration: none;
             margin-right: 10px;
             display: inline-block;
-            margin-right: 10 px\9
+            margin-right: 10px \9
         }
 
         .moreLink span {
             margin-right: 10px;
             color: #e4e4e4;
-            margin-right: 10 px\9
+            margin-right: 10px \9
         }
 
         .moreLink a:hover, .moreLink a:hover em {
@@ -3445,7 +3459,7 @@
 
         .vr-hint a {
             margin-right: 9px;
-            margin-right: 8 px\9
+            margin-right: 8px \9
         }
 
         .r-sech {
@@ -3950,161 +3964,260 @@
 
 
 <div class="wrap">
-<!--[if IE 6]><style type="text/css">.topbar, .res-logn-ico {display:none}</style><![endif]-->
-<dl class="topbar">
-    <dd class="no-bg"><a href="javascript:void(0)" class="res-logn-ico" id="loginBtn">登录</a></dd>
-</dl>
-<div class="header"><a title="回到搜狗首页" href="http://www.sogou.com/" class="logo"><img src="http://www.sogou.com/images/logo/new/sousuo02.png?nv=1&v=2"
-                                                                                     width="123" height="32" alt=""></a>
-										 <span class = "reminder">afhieo</span>
-										 <span class = "timer viz"></span>
+    <!--[if IE 6]><style type="text/css">.topbar, .res-logn-ico {display:none}</style><![endif]-->
+    <dl class="topbar">
+        <dd class="no-bg"><a href="javascript:void(0)" class="res-logn-ico" id="loginBtn">登录</a></dd>
+    </dl>
+    <div class="header"><a title="回到搜狗首页" href="http://www.sogou.com/" class="logo"><img
+            src="http://www.sogou.com/images/logo/new/sousuo02.png?nv=1&v=2"
+            width="123" height="32" alt=""></a>
+        <span class="remindernone" id="time_reminder">时间提示</span>
+        <span class="timer viznone" id="colorblock" flashtime="1000"></span>
 
 
-
-    <form name="searchForm" id="searchForm">
-        <div class="querybox">
-            <div class="qborder">
-                <div class="qborder2"><input type="text" class="query" id="upquery" name="query"
-                                             onfocus="focusInput(this)" ov="{{ query }}" value="{{ query }}" autocomplete="off">
+        <form name="searchForm" id="searchForm">
+            <div class="querybox">
+                <div class="qborder">
+                    <div class="qborder2"><input type="text" class="query" id="upquery" name="query"
+                                                 onfocus="focusInput(this)" ov="{{ query }}" value="{{ query }}"
+                                                 autocomplete="off">
+                    </div>
+                </div>
+                <input
+                        type="submit" value="搜狗搜索" class="sbtn1" uigs="searchBtn"
+                        onmouseup="this.className=&#39;sbtn1&#39;"
+                        onmousedown="this.className=&#39;btnactive&#39;" onmouseout="this.className=&#39;sbtn1&#39;"
+                        onmouseover="this.className=&#39;btnactive&#39;" id="searchBtn">
+                <!--
+                <div class="term">
+                    <div class="popMore" style="display:none"><a id="left_timespan_0" class="cur"
+                                                                 href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&ie=utf8&_ast=1415606656&_asf=null&w=01029901&p=40040100&dp=1&cid=&sut=7854&sst0=1415606634628&lkt=1%2C1415606631196%2C1415606631196#">全部时间</a><a
+                            id="left_timespan_1"
+                            href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&sut=7854&ie=utf8&sst0=1415606634628&p=40040100&cid=&sourceid=inttime_day&interV=kKIOkrELjbkNmLkElbYTkKIKmbELjboJmLkEkL8TkKIMkLELjb8TkKIKmrELjbkImLkElbs%3D_2064201500&tsn=1&interation=">一天内</a><a
+                            id="left_timespan_2"
+                            href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&sut=7854&ie=utf8&sst0=1415606634628&p=40040100&cid=&sourceid=inttime_week&interV=kKIOkrELjbkNmLkElbYTkKIKmbELjboJmLkEkL8TkKIMkLELjb8TkKIKmrELjbkImLkElbs%3D_2064201500&tsn=2&interation=">一周内</a><a
+                            id="left_timespan_3"
+                            href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&sut=7854&ie=utf8&sst0=1415606634628&p=40040100&cid=&sourceid=inttime_month&interV=kKIOkrELjbkNmLkElbYTkKIKmbELjboJmLkEkL8TkKIMkLELjb8TkKIKmrELjbkImLkElbs%3D_2064201500&tsn=3&interation=">一月内</a><a
+                            id="left_timespan_4"
+                            href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&sut=7854&ie=utf8&sst0=1415606634628&p=40040100&cid=&sourceid=inttime_year&interV=kKIOkrELjbkNmLkElbYTkKIKmbELjboJmLkEkL8TkKIMkLELjb8TkKIKmrELjbkImLkElbs%3D_2064201500&tsn=4&interation=">一年内</a>
+                    </div>
+                </div>
+                -->
+                <div>
+                    <button class="WCOverButton button blue close-reveal-modal" type="Button"
+                            onclick="over_button_on_click_time();">浏览完成
+                    </button>
                 </div>
             </div>
-            <input
-                type="submit" value="搜狗搜索" class="sbtn1" uigs="searchBtn" onmouseup="this.className=&#39;sbtn1&#39;"
-                onmousedown="this.className=&#39;btnactive&#39;" onmouseout="this.className=&#39;sbtn1&#39;"
-                onmouseover="this.className=&#39;btnactive&#39;" id="searchBtn">
-            <!--
-            <div class="term">
-                <div class="popMore" style="display:none"><a id="left_timespan_0" class="cur"
-                                                             href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&ie=utf8&_ast=1415606656&_asf=null&w=01029901&p=40040100&dp=1&cid=&sut=7854&sst0=1415606634628&lkt=1%2C1415606631196%2C1415606631196#">全部时间</a><a
-                        id="left_timespan_1"
-                        href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&sut=7854&ie=utf8&sst0=1415606634628&p=40040100&cid=&sourceid=inttime_day&interV=kKIOkrELjbkNmLkElbYTkKIKmbELjboJmLkEkL8TkKIMkLELjb8TkKIKmrELjbkImLkElbs%3D_2064201500&tsn=1&interation=">一天内</a><a
-                        id="left_timespan_2"
-                        href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&sut=7854&ie=utf8&sst0=1415606634628&p=40040100&cid=&sourceid=inttime_week&interV=kKIOkrELjbkNmLkElbYTkKIKmbELjboJmLkEkL8TkKIMkLELjb8TkKIKmrELjbkImLkElbs%3D_2064201500&tsn=2&interation=">一周内</a><a
-                        id="left_timespan_3"
-                        href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&sut=7854&ie=utf8&sst0=1415606634628&p=40040100&cid=&sourceid=inttime_month&interV=kKIOkrELjbkNmLkElbYTkKIKmbELjboJmLkEkL8TkKIMkLELjb8TkKIKmrELjbkImLkElbs%3D_2064201500&tsn=3&interation=">一月内</a><a
-                        id="left_timespan_4"
-                        href="http://www.sogou.com/web?query=%E5%BC%80%E5%BF%83%E4%B9%90%E5%9B%AD+%E7%BE%8A%E9%A9%BC&sut=7854&ie=utf8&sst0=1415606634628&p=40040100&cid=&sourceid=inttime_year&interV=kKIOkrELjbkNmLkElbYTkKIKmbELjboJmLkEkL8TkKIMkLELjb8TkKIKmrELjbkImLkElbs%3D_2064201500&tsn=4&interation=">一年内</a>
-                </div>
-            </div>
-            -->
+        </form>
+
+        <form id="fankuiform" method="post" accept-charset="gbk"><input type="hidden" name="cause" value="满意"><input
+                type="hidden" name="query" value="开心乐园 羊驼"><input type="hidden" name="refer"
+                                                                  value="http://www.sogou.com/web?query=%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0&amp;ie=utf8&amp;_ast=1415606656&amp;_asf=null&amp;w=01029901&amp;p=40040100&amp;dp=1&amp;cid=&amp;sut=9839&amp;sst0=1415606624373&amp;lkt=0%2C0%2C0"><input
+                type="hidden" name="uuid" value="be121967-ac67-4039-805c-e28f02d3e83c"><input type="hidden"
+                                                                                              name="scenehtml"
+                                                                                              id="scenehtml"><input
+                type="hidden" name="queryurl" value=""><input type="hidden" name="v" value="1"></form>
+    </div>
+
+
+    <div class="wrapper" id="wrapper">
+
+        <div id="main" class="main">
+
+
             <div>
-		        <button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="over_button_on_click();">浏览完成</button>
-	        </div>
+                <div class="results">
+
+                    <style>
+                        .catebox {
+                            line-height: 34px;
+                            border-bottom: 1px dotted #eee;
+                            color: #ccc;
+                            font-size: 12px;
+                            margin: 0 0 15px 0;
+                        }
+
+                        .catetitle {
+                            color: #999;
+                            font-weight: normal
+                        }
+
+                        .catebox a {
+                            color: #333;
+                            display: inline-block;
+                            padding: 0 4px;
+                            text-decoration: none;
+                        }
+
+                        .catebox a:hover {
+                            color: #8b58a2;
+                        }
+
+                        .curcate {
+                            line-height: 18px;
+                            display: inline-block;
+                            background: #99C47A url(../../../../static/images/curcate.gif) no-repeat;
+                            color: #fff;
+                            font-weight: normal;
+                        }
+
+                        .curcate span {
+                            background: url(../../../../static/images/curcate.gif) no-repeat right -32px;
+                            display: inline-block;
+                            padding: 0 4px;
+                        }
+
+                        .lastcate {
+                            border-bottom: 1px solid #DDE6E3;
+                        }
+
+                    </style>
+
+                    {% for r in resultlist %}
+                        {{ r | safe }}
+                    {% empty %}
+                        <div class="vrTips" id="noresult_part1_container"><p class="icon_noRes">
+                            抱歉，没有找到与<span style="font-family:宋体">“</span> <em>{{ query }}</em> <span
+                                style="font-family:宋体">”</span>相关的网页。
+                        </p>
+
+                            <h3 class="p14" id="noresult_part3_container">建议您:</h3>
+                            <ol class="noResList">
+                                <li>请检查您输入的关键词是否有错误;</li>
+
+                                <li>换另一个相似的词，或常见的词试试;</li>
+
+                                <li>您可以查看<a href="http://help.sogou.com/?v=1" id="sogou_help">搜狗帮助</a>，或向我们<a
+                                        href="javascript:dissatisfied('fankuiform')">提出建议</a>。
+                                </li>
+
+                            </ol>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+
+
         </div>
-    </form>
 
-    <form id="fankuiform" method="post" accept-charset="gbk"><input type="hidden" name="cause" value="满意"><input
-            type="hidden" name="query" value="开心乐园 羊驼"><input type="hidden" name="refer"
-                                                              value="http://www.sogou.com/web?query=%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0&amp;ie=utf8&amp;_ast=1415606656&amp;_asf=null&amp;w=01029901&amp;p=40040100&amp;dp=1&amp;cid=&amp;sut=9839&amp;sst0=1415606624373&amp;lkt=0%2C0%2C0"><input
-            type="hidden" name="uuid" value="be121967-ac67-4039-805c-e28f02d3e83c"><input type="hidden" name="scenehtml"
-                                                                                          id="scenehtml"><input
-            type="hidden" name="queryurl" value=""><input type="hidden" name="v" value="1"></form>
-</div>
+    </div>
 
-
-<div class="wrapper" id="wrapper">
-
-<div id="main" class="main">
-
-
-<div> <div class="results">
-
-<style>
-    .catebox {
-        line-height: 34px;
-        border-bottom: 1px dotted #eee;
-        color: #ccc;
-        font-size: 12px;
-        margin: 0 0 15px 0;
-    }
-
-    .catetitle {
-        color: #999;
-        font-weight: normal
-    }
-
-    .catebox a {
-        color: #333;
-        display: inline-block;
-        padding: 0 4px;
-        text-decoration: none;
-    }
-
-    .catebox a:hover {
-        color: #8b58a2;
-    }
-
-    .curcate {
-        line-height: 18px;
-        display: inline-block;
-        background: #99C47A url(../../../../static/images/curcate.gif) no-repeat;
-        color: #fff;
-        font-weight: normal;
-    }
-
-    .curcate span {
-        background: url(../../../../static/images/curcate.gif) no-repeat right -32px;
-        display: inline-block;
-        padding: 0 4px;
-    }
-
-    .lastcate {
-        border-bottom: 1px solid #DDE6E3;
-    }
-
-</style>
-
-{% for r in resultlist %}
-    {{ r | safe }}
-{% empty %}
-    <div class="vrTips" id="noresult_part1_container"><p class="icon_noRes">
-			抱歉，没有找到与<span style="font-family:宋体">“</span> <em>{{ query }}</em> <span style="font-family:宋体">”</span>相关的网页。
-		  </p>
-
-		<h3 class="p14" id="noresult_part3_container">建议您:</h3>
-		<ol class="noResList">
-			<li>请检查您输入的关键词是否有错误;</li>
-
-			<li>换另一个相似的词，或常见的词试试;</li>
-
-			<li>您可以查看<a href="http://help.sogou.com/?v=1" id="sogou_help">搜狗帮助</a>，或向我们<a href="javascript:dissatisfied('fankuiform')">提出建议</a>。</li>
-
-		</ol>
-	</div>
-{% endfor %}
-
-
-
-</div>
-</div>
-
-
-</div>
-
-</div>
-
-<div class="p" id="pagebar_container">
-    {% for i in page_str %}
-        {% ifequal pageid i %}
-            <span>{{ pageid }}</span>
-        {% else %}
+    <div class="p" id="pagebar_container">
+        {% for i in page_str %}
+            {% ifequal pageid i %}
+                <span>{{ pageid }}</span>
+            {% else %}
+                <a
+                        id="sogou_page_{{ i }}"
+                        class="pagination"
+                        href="/search/{{ taskid }}/{{ query }}/{{ forloop.counter }}/"
+                        onclick="modifiedTime();">{{ forloop.counter }}</a>
+            {% endifequal %}
+        {% endfor %}
+        {% if next_pageid %}
             <a
-                id="sogou_page_{{ i }}"
-                class="pagination"
-                href="/search/{{ taskid }}/{{ query }}/{{ forloop.counter }}/">{{ forloop.counter }}</a>
-        {% endifequal %}
-    {% endfor %}
-    {% if next_pageid %}
-        <a
-            id="sogou_next"
-            href="/search/{{ taskid }}/{{ query }}/{{ next_pageid }}/"
-            class="pagination np">下一页 &gt;</a>
-    {% endif %}
-<img style="position:absolute;top:-1px" src="../../../../static/fav.ico" height="0" border="0" width="0">
-<img src="../../../../static/pv.gif" width="1" height="1" style="position:absolute;top:-1px">
+                    id="sogou_next"
+                    href="/search/{{ taskid }}/{{ query }}/{{ next_pageid }}/"
+                    class="pagination np"
+                    onclick="modifiedTime();">下一页 &gt;</a>
+        {% endif %}
+        <img style="position:absolute;top:-1px" src="../../../../static/fav.ico" height="0" border="0" width="0">
+        <img src="../../../../static/pv.gif" width="1" height="1" style="position:absolute;top:-1px">
+    </div>
 </div>
+<script>// utility function called by getCookie()
+function getCookieVal(offset) {
+    var endstr = document.cookie.indexOf(";", offset);
+    if (endstr == -1) {
+        endstr = document.cookie.length;
+    }
+    return unescape(document.cookie.substring(offset, endstr));
+}
+
+// primary function to retrieve cookie by name
+function getCookie(name) {
+    var arg = name + "=";
+    var alen = arg.length;
+    var clen = document.cookie.length;
+    var i = 0;
+    while (i < clen) {
+        var j = i + alen;
+        if (document.cookie.substring(i, j) == arg) {
+            return getCookieVal(j);
+        }
+        i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) break;
+    }
+    return null;
+}
+
+// store cookie value with optional details as needed
+function setCookie(name, value, expires, path, domain, secure) {
+    document.cookie = name + "=" + escape(value) +
+            ((expires) ? "; expires=" + expires : "") +
+            ((path) ? "; path=" + path : "") +
+            ((domain) ? "; domain=" + domain : "") +
+            ((secure) ? "; secure" : "");
+}
+
+// remove the cookie by setting ancient expiration date
+function deleteCookie(name, path, domain) {
+    if (getCookie(name)) {
+        document.cookie = name + "=" +
+                ((path) ? "; path=" + path : "") +
+                ((domain) ? "; domain=" + domain : "") +
+                "; expires=Thu, 01-Jan-1970 00:00:01 GMT";
+
+    }
+}
+</script>
 </body>
 <script>
-    setInterval(function() { $('.timer').toggleClass('viz');}, 1000);
+
+    var c = parseInt(getCookie('time'));
+
+
+    var flashtime = 3000;
+    var interFlag;
+    function flash() {
+
+        $('.timer').toggleClass('viz');
+    }
+
+    function modifiedTime(){
+        setCookie('time',c,'','/','','');
+
+    }
+
+    function timedCount() {
+        c = c + 1
+        if (c < 120){
+            color = '#28FF28';
+            tmpft = 3000;
+        }
+        if ((c > 120)&&(c<300)){
+            color = '#FF8000';
+            tmpft = 2000;
+        }
+        if ((c > 300)){
+            color = '#EA0000';
+            tmpft = 100;
+        }
+        if (tmpft != flashtime){
+            clearInterval(interFlag);
+            interFlag = setInterval(flash, tmpft);
+            flashtime = tmpft;
+        }
+        document.getElementById('colorblock').style.backgroundColor=color;
+
+
+        t = setTimeout("timedCount()", 1000)
+    }
+
+    interFlag = setInterval(flash,1000);
+    timedCount();
 </script>
 </html>

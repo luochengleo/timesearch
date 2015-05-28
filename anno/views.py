@@ -40,9 +40,9 @@ def search(request,taskid,query,pageid):
    # query = query.decode('cp936','ignore').decode('utf8')
 
     # print urllib.quote(query)
-    results = srh.getResult(query, 10*(int(pageid)-1), 10)
+    results = srh.getResult(query, 20*(int(pageid)-1), 20)
     results_count = srh.getCount(query)
-    max_pageid = results_count / 10
+    max_pageid = results_count / 20
     if expType=='exp':
         t = template.Template(open('templates/outexplicit.html').read())
     else:
