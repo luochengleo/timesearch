@@ -364,5 +364,5 @@ function over_button_on_click_time(){
     var client_time = (new Date()).getTime();
     send_mouse_info(formInfo("OVER", 'client_time=' + client_time));
     sync_flush_log_message();
-    location.href = "/timeanno/" + currentTaskID + "/";
+    location.href = "/taskreview/" + currentTaskID + "/";
 }
