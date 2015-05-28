@@ -3979,7 +3979,7 @@
     </div>
    <span></span> <button style="font-size=16px">提交收获</button></span>
 </div>
-
+<!--
 <div class="annotation_header">
 <h1>
     搜索结果标注
@@ -3995,21 +3995,21 @@
 
  <div class="results">
 
-{% for r in resultlist %}
-    {{ r |add_annotation| safe }}
-{% endfor %}
+
 </div>
 </div>
 </div>
+-->
 <div class="annotation_footer">
-    <div style="margin-bottom: 10px">
+    <div>
         <div>
-            当前查询对搜索结果的满意程度:
+            当前任务对搜索结果的满意程度:
         </div>
-        <div id="query_annotation"></div>
+        <div id="session_annotation"></div>
         <div><p></p></div>
     </div>
-    <button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="over_button_on_click();">浏览完成</button>
+    <button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="session_over_button_on_click();">浏览完成</button>
 </div>
+
 </body>
 </html>

@@ -21,16 +21,15 @@ class LogHub:
                 rtr.append(q)
         return rtr
 
-    def getClickedResults(self, studentID, taskid, query):
+    def getClickedResults(self, studentID, taskid):
         clicked_logs = Log.objects.filter(studentID=studentID,
                                             task_id=taskid,
-                                            query=query,
                                             action='CLICK')
         clicked_result_rank = []
         for l in clicked_logs:
             c = l.content
             clicked_result_rank.append(getRankOfClickResult(c))
 
-        return SearchResult.objects.filter(query=query, rank__in=clicked_result_rank)
+        return SearchResult.objects.filter(rank__in=clicked_result_rank)
 
 

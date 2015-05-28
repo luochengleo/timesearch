@@ -21,13 +21,6 @@ import sys
 import urllib
 from anno.models import Task
 reload(sys)
-def hello(request):
-    return HttpResponse('hello world')
-
-def current_datetime(request):
-    now = datetime.datetime.now()
-    html = "<html><body>It is now %s.</body></html>" % now
-    return HttpResponse(html)
 
 def search(request,taskid,query,pageid):
     try:
@@ -61,16 +54,6 @@ def search(request,taskid,query,pageid):
     # fout.write(t.render(c).decode('utf8','ignore').encode('utf8'))
     # fout.close()
     return HttpResponse(t.render(c))
-
-def train(request,userid):
-    html = '<html><body> It is the '+userid +' train task </body></html>'
-    return HttpResponse(html)
-def validate(request,taskid):
-    html = '<html><body> It is the '+taskid +' task. </body></html>'
-    return HttpResponse(html)
-
-def slider(request):
-    return HttpResponse(open('templates/seekbar.html').read())
 
 def login(request):
     return HttpResponse(open('templates/login.html').read())
@@ -108,18 +91,17 @@ def annolist(request, taskid):
     return HttpResponse(html.render(c))
 
 
-def annotation(request, taskid, query):
+def annotation(request, taskid):
     try:
         studentID = request.COOKIES['studentID']
     except:
         return HttpResponse('ERROR: UNKNOWN STUDENT ID')
     lh = LogHub()
-    results = lh.getClickedResults(studentID, taskid, query)
+    results = lh.getClickedResults(studentID, taskid)
     # print 'len result:', len(results)
     t = template.Template(open('templates/annotation.html').read())
     c = template.Context({'resultlist': [r.content for r in results],
-                          'taskid': taskid,
-                          'query': query})
+                          'taskid': taskid})
     return HttpResponse(t.render(c))
 
 
@@ -146,7 +128,7 @@ def taskreview(request,taskid):
     lh = LogHub()
     currTask = Task.objects.get(task_id =int(taskid))
     query = currTask.init_query
-    results = lh.getClickedResults(studentID, taskid, query)
+    results = lh.getClickedResults(studentID, taskid)
     # print 'len result:', len(results)
     t = template.Template(open('templates/taskreview.html').read())
     c = template.Context({'resultlist': [r.content for r in results],

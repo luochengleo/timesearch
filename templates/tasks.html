@@ -89,7 +89,8 @@ function deleteCookie(name, path, domain) {
     <span>任务描述：</span><span><audio  controls="controls">
   <source src="/static/audio/{{ item.audiofilename }}" type="audio/mp3" />
     </audio></span>
-    <a class="annotation_link" href ='/search/{{ item.task_id }}/{{ item.init_query }}/1/' target="_blank" onclick="resetTime();">点击这里开始</a>
+    <div><a class="annotation_link" href ='/search/{{ item.task_id }}/{{ item.init_query }}/1/' target="_blank" onclick="resetTime();">点击这里开始</a></div>
+
 </div>
 
 </div>
