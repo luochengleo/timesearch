@@ -41,11 +41,13 @@
 <form align=center>
     <table align="center">
         <tr align="center">
-            <td>选择实验类型：</td>
+            <td>选择实验配置：</td>
             <td>
          <select align="center" style="width:130px" id="tasktype">
-                                    <option value="exp">显式实验</option>
-                                    <option value="imp">隐式实验</option>
+             {%  for t in allsettings  %}
+             <option value="{{ t.0 }}">{{ t.0 }}    {{ t.1 }}</option>
+
+             {% endfor %}
                                 </select>
             </td>
         </tr>
