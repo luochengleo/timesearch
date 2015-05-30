@@ -18,6 +18,14 @@ from django.db import models
 # BinaryField	--
 # ObjectIdField	--
 # FileField	FileField
+
+class Setting(models.Model):
+    idx = models.IntegerField()
+    taskidx = models.IntegerField()
+    option = models.CharField(max_length=1000)
+    temporal = models.CharField(max_length=1000)
+    status = models.IntegerField()
+
 class Task(models.Model):
     content = models.CharField(max_length=1000)
     task_id = models.IntegerField()
