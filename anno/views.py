@@ -20,6 +20,7 @@ import random
 import sys
 import urllib
 from anno.models import Task
+from anno.models import Setting
 reload(sys)
 
 def search(request,taskid,query,pageid):
@@ -56,9 +57,31 @@ def search(request,taskid,query,pageid):
     return HttpResponse(t.render(c))
 
 def login(request):
-    return HttpResponse(open('templates/login.html').read())
+    class tempt:
+        def __init__(self,_idx,_t):
+            idx = _idx
+            temporal = _t
 
-def tasks(request, sID,expType):
+    settings = set()
+    for t in Setting.objects.all():
+        settings.add((t.idx,t.temporal))
+    allsettings = set()
+    for s in settings:
+        allsettings.add((s[0],s[1]))
+        print s[0],s[1]
+    html = template.Template(open('templates/login.html').read())
+    c = template.Context({'allsettings':allsettings})
+    respon = HttpResponse(html.render(c))
+
+
+
+    return HttpResponse(respon)
+
+def tasks(request, sID,settingId):
+    settings = Setting.objects.filter(idx=int(settingId))
+    tlist = list()
+    for s in settings:
+        taskidx =
     tlist = list(Task.objects.filter(task_id__lte=12))
     if sID == '2013310564':
         tlist = [Task.objects.get(task_id=13)]
@@ -69,13 +92,12 @@ def tasks(request, sID,expType):
         print t.task_id
     html = template.Template(open('templates/tasks.html').read())
 
-
     c = template.Context({'tasks':tlist,'tasknum':len(tlist)})
 
-
     respon = HttpResponse(html.render(c))
-    respon.set_cookie('studentID', value=sID, max_age=None, expires=None, path='/', domain=None, secure=None)
+
     respon.set_cookie('expType', value=expType, max_age=None, expires=None, path='/', domain=None, secure=None)
+    respon.set_cookie('studentID', value=sID, max_age=None, expires=None, path='/', domain=None, secure=None)
 
     return respon
 
