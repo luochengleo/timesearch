@@ -81,7 +81,7 @@ def tasks(request, sID,settingId):
     settings = Setting.objects.filter(idx=int(settingId))
     tlist = list()
     for s in settings:
-        taskidx =
+        taskidx = 0
     tlist = list(Task.objects.filter(task_id__lte=12))
     if sID == '2013310564':
         tlist = [Task.objects.get(task_id=13)]
