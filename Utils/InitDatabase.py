@@ -41,3 +41,5 @@ def importSettings(filename,offset=25):
                 _set.save()
                 _set = Setting(idx = numSetting+offset,taskidx = numTask, option = 'UNSAT',temporal='LOW',status=0)
                 _set.save()
+    def default():
+        importSettings('temp/setting.csv',25)
