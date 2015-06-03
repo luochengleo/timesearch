@@ -80,8 +80,19 @@ def login(request):
 def tasks(request, sID,settingId):
     settings = Setting.objects.filter(idx=int(settingId))
     tlist = list()
+     # tlist = (taskid, query,description,audiofile,option,temporal)
     for s in settings:
-        taskidx = 0
+        _listitem = [0,'','','','','','']
+        temporal = s.temporal
+        option= s.optionl
+        taskidx = s.taskidx
+
+
+
+        _listitem[0] = taskidx
+
+
+
     tlist = list(Task.objects.filter(task_id__lte=12))
     if sID == '2013310564':
         tlist = [Task.objects.get(task_id=13)]
@@ -96,7 +107,6 @@ def tasks(request, sID,settingId):
 
     respon = HttpResponse(html.render(c))
 
-    respon.set_cookie('expType', value=expType, max_age=None, expires=None, path='/', domain=None, secure=None)
     respon.set_cookie('studentID', value=sID, max_age=None, expires=None, path='/', domain=None, secure=None)
 
     return respon
