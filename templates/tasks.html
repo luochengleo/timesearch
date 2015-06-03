@@ -87,7 +87,7 @@ function deleteCookie(name, path, domain) {
 <h2> 第 {{ forloop.counter }} 个搜索任务</h2>
     <p>查询： {{ item.init_query }}</p>
     <span>任务描述：</span><span><audio  controls="controls">
-  <source src="/static/audio/{{ item.audiofilename }}" type="audio/mp3" />
+  <source src="/{{ item.audiofilename }}" type="audio/wma" />
     </audio></span>
     <div><a class="annotation_link" href ='/search/{{ item.task_id }}/{{ item.init_query }}/{{ item.satisfactio }}/1/' target="_blank" onclick="resetTime();">点击这里开始</a></div>
 

@@ -84,8 +84,11 @@ def tasks(request, sID,settingId):
     for s in settings:
         _listitem = [0,'','','','','','']
         temporal = s.temporal
-        option= s.optionl
+        option= s.option
         taskidx = s.taskidx
+        
+
+
 
 
 
