@@ -4091,7 +4091,6 @@
         </div>
 
     </div>
-<!--
     <div class="p" id="pagebar_container">
         {% for i in page_str %}
             {% ifequal pageid i %}
@@ -4100,21 +4099,20 @@
                 <a
                         id="sogou_page_{{ i }}"
                         class="pagination"
-                        href="/search/{{ taskid }}/{{ query }}/{{ forloop.counter }}/"
+                        href="/search/{{ taskid }}/{{ satisfaction }}/{{ temporal }}/{{ query }}/{{ forloop.counter }}/"
                         onclick="modifiedTime();">{{ forloop.counter }}</a>
             {% endifequal %}
         {% endfor %}
         {% if next_pageid %}
             <a
                     id="sogou_next"
-                    href="/search/{{ taskid }}/{{ query }}/{{ next_pageid }}/"
+                    href="/search/{{ taskid }}/{{ satisfaction }}/{{ temporal }}/{{ query }}/{{ next_pageid }}/"
                     class="pagination np"
                     onclick="modifiedTime();">下一页 &gt;</a>
         {% endif %}
         <img style="position:absolute;top:-1px" src="../../../../static/fav.ico" height="0" border="0" width="0">
         <img src="../../../../static/pv.gif" width="1" height="1" style="position:absolute;top:-1px">
     </div>
--->
 </div>
 <script>// utility function called by getCookie()
 function getCookieVal(offset) {
@@ -4207,5 +4205,13 @@ function deleteCookie(name, path, domain) {
 
     interFlag = setInterval(flash,3000);
     timedCount();
+
 </script>
+<script>
+    if(e.altKey && e.keyCode==13){
+    alert('您同时按了Alt键和Enter键')
+        //ctrl键是e.ctrlKey
+        //shift键是e.shiftKey
+    }
+})</script>
 </html>

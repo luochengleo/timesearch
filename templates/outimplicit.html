@@ -4113,14 +4113,14 @@
                 <a
                         id="sogou_page_{{ i }}"
                         class="pagination"
-                        href="/search/{{ taskid }}/{{ query }}/{{ forloop.counter }}/"
+                        href="/search/{{ taskid }}/{{ satisfaction }}/{{ temporal }}/{{ query }}/{{ forloop.counter }}/"
                         onclick="modifiedTime();">{{ forloop.counter }}</a>
             {% endifequal %}
         {% endfor %}
         {% if next_pageid %}
             <a
                     id="sogou_next"
-                    href="/search/{{ taskid }}/{{ query }}/{{ next_pageid }}/"
+                    href="/search/{{ taskid }}/{{ satisfaction }}/{{ temporal }}/{{ query }}/{{ next_pageid }}/"
                     class="pagination np"
                     onclick="modifiedTime();">下一页 &gt;</a>
         {% endif %}
