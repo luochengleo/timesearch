@@ -137,6 +137,62 @@ function session_over_button_on_click() {
     }
 }
 
+function click_on_submittimeestimation(){
+    var text = $("#time").html();
+    var message = "";
+    var client_time = (new Date()).getTime();
+    message += "TIMESTAMP=" + client_time;
+    message += "\tUSER=" + studentID;
+    message += "\tTASK=" + currentTaskID;
+    message += "\tACTION=DESCRIPTION";
+    message += "\tINFO:";
+    message += "\ttime=" + text + "\n";
+    var log_url = "http://" + server_site + ":8000/TimeEstService/";
+    if (confirm("Are you confirm that this is your time estimation?")) {
+        $.ajax({
+            type: 'POST',
+            url: log_url,
+            data: {message: message},
+            async: false,
+            complete: function (jqXHR, textStatus) {
+                //alert(textStatus + "----" + jqXHR.status + "----" + jqXHR.readyState);
+                //should we reset onbeforeunload here?
+                console.log(text)
+                console.log("synchronously flush time estimation")
+            }
+        });
+        window.onbeforeunload = null;
+    }
+}
+
+function click_on_submitoutcome(){
+    var text = $("#answer").val();
+    var message = "";
+    var client_time = (new Date()).getTime();
+    message += "TIMESTAMP=" + client_time;
+    message += "\tUSER=" + studentID;
+    message += "\tTASK=" + currentTaskID;
+    message += "\tACTION=DESCRIPTION";
+    message += "\tINFO:";
+    message += "\tanswer=" + text + "\n";
+    var log_url = "http://" + server_site + ":8000/OutcomeService/";
+    if (confirm("Are you confirm that this is your outcome?")) {
+        $.ajax({
+            type: 'POST',
+            url: log_url,
+            data: {message: message},
+            async: false,
+            complete: function (jqXHR, textStatus) {
+                //alert(textStatus + "----" + jqXHR.status + "----" + jqXHR.readyState);
+                //should we reset onbeforeunload here?
+                console.log("synchronously flush hallo answer")
+            }
+        });
+        window.onbeforeunload = null;
+        //location.href = "/search/" + currentTaskID + "/" + initQuery + "/1/";
+    }
+}
+
 function over_button_on_click() {
     var result_ids = $(".rb").map(function (i, e) {return e.id;});
     var result_urls = $(".rb h3 a").map(function (i, e) {return e.href;});
@@ -192,3 +248,5 @@ function over_button_on_click() {
         window.close();
     }
 }
+
+

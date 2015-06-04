@@ -8,7 +8,9 @@ from Utils.SearchResultHub import SearchResultHub
 from Utils import LogParser
 from Utils import AnnoLogParser
 from Utils import SessionAnnoLogParser
-from Utils import QuestionnaireLogParser
+from Utils import OutcomeLogParser
+from Utils import TimeEstLogParser
+
 from Utils import QuerySatisfactionLogParser
 from Utils.LogHub import LogHub
 from django.template import loader
@@ -206,10 +208,10 @@ def log_session_annotation(request):
 
 
 @csrf_exempt
-def log_questionnaire(request):
+def log_outcome(request):
     message = urllib.unquote(request.POST[u'message'])
     # print message
-    QuestionnaireLogParser.insertMessageToDB(message)
+    OutcomeLogParser.insertMessageToDB(message)
     return HttpResponse('OK')
 
 @csrf_exempt
@@ -217,4 +219,11 @@ def log_query_satisfaction(request):
     message = urllib.unquote(request.POST[u'message'])
     # print message
     QuerySatisfactionLogParser.insertMessageToDB(message)
+    return HttpResponse('OK')
+
+@csrf_exempt
+def log_timeest(request):
+
+    message = urllib.unquote(request.POST[u'message'])
+    TimeEstLogParser.insertMessageToDB(message)
     return HttpResponse('OK')

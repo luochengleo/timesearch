@@ -9,10 +9,11 @@ from anno.views import annolist
 from anno.views import annotation
 from anno.views import log_annotation
 from anno.views import log_session_annotation
-from anno.views import log_questionnaire
+from anno.views import log_outcome
 from anno.views import questionnaire
 from anno.views import log_query_satisfaction
 from anno.views import description
+
 from anno.views import *
 
 urlpatterns = patterns('',
@@ -29,6 +30,7 @@ urlpatterns = patterns('',
     (r'^LogService/$', log),
     (r'^AnnoService/$', log_annotation),
     (r'^SessionAnnoService/$', log_session_annotation),
-    (r'^QuestionnaireService/$', log_questionnaire),
+    (r'^OutcomeService/$', log_outcome),
+    (r'^TimeEstService/$', log_timeest),
     (r'^QuerySatisfactionService/$', log_query_satisfaction)
 )
