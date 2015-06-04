@@ -133,7 +133,7 @@ function session_over_button_on_click() {
             }
         });
         window.onbeforeunload = null;
-        location.href = "/questionnaire/" + currentTaskID + "/";
+        location.href = "/annotation/" + currentTaskID + "/";
     }
 }
 
