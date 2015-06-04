@@ -190,6 +190,8 @@ function click_on_submitoutcome(){
         });
         window.onbeforeunload = null;
         //location.href = "/search/" + currentTaskID + "/" + initQuery + "/1/";
+        location.href = "/annotation/" + currentTaskID + "/";
+
     }
 }
 

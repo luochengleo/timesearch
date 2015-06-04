@@ -71,10 +71,9 @@
         }
         var strcookie = document.cookie;
         var arrcookie = strcookie.split("; ");
-        var sid = arrcookie[0].split('=')[1]
+        var sid = arrcookie[1].split('=')[1]
 
-        document.write('<p align="center"><font style="font-size:16px" color="red">当前标注人员账号为' + sid + '</font></p>')
-        document.write('<p align="center"><font style="font-size:16px" color="red">cookie' + arrcookie + '</font></p>')
+        document.write('<p align="center"><font style="font-size:16px" color="red">当前实验人员账号为' + sid + '</font></p>')
     </script>
 
     <p align="center" style="font-size:16px" color="red">当前共有{{ tasknum }}个查询任务</p>

@@ -25,6 +25,7 @@
    </script>
    	<script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="/static/conf/jquery-min.js"></script>
+    <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/static/conf/wc_preprocess.js"></script>
 	<script type="text/javascript" src="/static/conf/jquery.bgpos.js"></script>
 	<script type="text/javascript" src="/static/conf/jquery.reveal.js"></script>
@@ -56,9 +57,11 @@
  <div id = "seekbar"> </div>
     <span>花费时间</span>
     <span id = "time" name = "time">0分0秒</span>
-<button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="click_on_submittimeestimation();">提交时间估计</button>    <script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
+<button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="click_on_submittimeestimation();">提交时间估计</button>
+    <!--
+    <script type="text/javascript" src="/static/conf/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/static/jquery.min.2.1.4.js"></script>
-    <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
+    !-->
     <script>
 
 	$(document).ready(function(){
@@ -87,8 +90,7 @@
     <div class="annotation_cell">
         <textarea name="answer" id="answer"></textarea>
     </div>
-   <span></span>     <button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="click_on_submitoutcome();">提交收获</button>
-</span>
+    <button class="WCOverButton button blue close-reveal-modal align"  type="Button" onclick="click_on_submitoutcome();">提交收获</button>
 </div>
 <!--
 <div class="annotation_header">
@@ -110,7 +112,7 @@
 </div>
 </div>
 </div>
--->
+
 <div class="annotation_footer">
     <div>
         <div>
@@ -121,6 +123,6 @@
     </div>
     <button class="WCOverButton button blue close-reveal-modal"  type="Button" onclick="session_over_button_on_click();">浏览完成</button>
 </div>
-
+-->
 </body>
 </html>
