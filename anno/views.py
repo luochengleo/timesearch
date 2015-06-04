@@ -115,8 +115,7 @@ def tasks(request, sID,settingId):
     random.seed(int(sID))
     random.shuffle(tlist)
     print 'len tlist', len(tlist)
-    for t in tlist:
-        print t[0]
+
     html = template.Template(open('templates/tasks.html').read())
 
     c = template.Context({'tasks':tlist,'tasknum':len(tlist)})
@@ -175,12 +174,14 @@ def taskreview(request,taskid):
     lh = LogHub()
     currTask = Task.objects.get(task_id =int(taskid))
     query = currTask.init_query
+    question = currTask.question
     results = lh.getClickedResults(studentID, taskid)
     # print 'len result:', len(results)
     t = template.Template(open('templates/taskreview.html').read())
     c = template.Context({'resultlist': [r.content for r in results],
                           'taskid': taskid,
-                          'query': query})
+                          'query': query,
+                          'question':question})
     return HttpResponse(t.render(c))
 @csrf_exempt
 def log(request):

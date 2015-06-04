@@ -40,6 +40,20 @@ def importSettings(filename,offset=25):
                 _set.save()
                 _set = Setting(idx = numSetting+offset,taskidx = numTask, option = 'UNSAT',temporal='LOW',status=0)
                 _set.save()
+def importTestSettings():
+    options = ['SAT','MIDSAT','UNSAT']
+    import random
+    for i in range(1,21,1):
+        rit = random.randint(0, 2)
+        _set = Setting(idx = 51,taskidx = i, option = options[rit],temporal='HIGH',status=0)
+        _set.save()
+    for i in range(1,21,1):
+        rit = random.randint(0, 2)
+        _set = Setting(idx = 52,taskidx = i, option = options[rit],temporal='LOW',status=0)
+        _set.save()
+
+
 def init_default():
     importSettings('temp/setting.csv',25)
     importTasks('temp/tasksforimport.csv')
+    importTestSettings()
