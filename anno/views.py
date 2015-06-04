@@ -144,8 +144,10 @@ def annotation(request, taskid):
     except:
         return HttpResponse('ERROR: UNKNOWN STUDENT ID')
     lh = LogHub()
-    results = lh.getClickedResults(int(studentID), (taskid))
-    # print 'len result:', len(results)
+
+    results = lh.getClickedResults(studentID, int(taskid))
+    print 'len result for annotation:', len(results)
+
     t = template.Template(open('templates/annotation.html').read())
     c = template.Context({'resultlist': [r.content for r in results],
                           'taskid': taskid})
