@@ -88,12 +88,17 @@ class QuerySatisfaction(models.Model):
     score = models.IntegerField()
     content = models.CharField(max_length=5000)
 
-class QuestionnaireAnswer(models.Model):
+class Outcome(models.Model):
     studentID = models.CharField(max_length=50)
     task_id = models.IntegerField()
     answer = models.CharField(max_length=5000)
     content = models.CharField(max_length=5000)
 
+class TimeEstimation(models.Model):
+    studentID = models.CharField(max_length=50)
+    task_id = models.IntegerField()
+    time = models.CharField(max_length=5000)
+    content = models.CharField(max_length=5000)
 
 if __name__ == '__main__':
     task = Task(connect='hello world', task_id=0)

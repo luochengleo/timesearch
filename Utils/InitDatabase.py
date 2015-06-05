@@ -7,10 +7,9 @@ def importTasks(filename):
     fin = open(filename, 'r')
     for line in fin:
         print line
-        task_id, init_query, content,question = line.split(',')
+        task_id, init_query, content,question,filename = line.split(',')
         task_id = int(task_id)
-        t = Task(content=content, task_id=task_id, init_query=init_query, question=question)
-        print content,task_id,init_query
+        t = Task(content=content, task_id=task_id, init_query=init_query, question=question,audiofilename='static/audio/'+filename)
         t.save()
 
 def importSettings(filename,offset=25):
@@ -41,3 +40,20 @@ def importSettings(filename,offset=25):
                 _set.save()
                 _set = Setting(idx = numSetting+offset,taskidx = numTask, option = 'UNSAT',temporal='LOW',status=0)
                 _set.save()
+def importTestSettings():
+    options = ['SAT','MIDSAT','UNSAT']
+    import random
+    for i in range(1,21,1):
+        rit = random.randint(0, 2)
+        _set = Setting(idx = 51,taskidx = i, option = options[rit],temporal='HIGH',status=0)
+        _set.save()
+    for i in range(1,21,1):
+        rit = random.randint(0, 2)
+        _set = Setting(idx = 52,taskidx = i, option = options[rit],temporal='LOW',status=0)
+        _set.save()
+
+
+def init_default():
+    importSettings('temp/setting.csv',25)
+    importTasks('temp/tasksforimport.csv')
+    importTestSettings()

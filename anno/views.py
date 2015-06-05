@@ -8,7 +8,9 @@ from Utils.SearchResultHub import SearchResultHub
 from Utils import LogParser
 from Utils import AnnoLogParser
 from Utils import SessionAnnoLogParser
-from Utils import QuestionnaireLogParser
+from Utils import OutcomeLogParser
+from Utils import TimeEstLogParser
+
 from Utils import QuerySatisfactionLogParser
 from Utils.LogHub import LogHub
 from django.template import loader
@@ -21,36 +23,49 @@ import sys
 import urllib
 from anno.models import Task
 from anno.models import Setting
+from copy import deepcopy
 reload(sys)
 
-def search(request,taskid,query,pageid):
-    try:
-        expType = request.COOKIES['expType']
-    except:
-        return HttpResponse('ERROR: UNKNOWN expType')
+def search(request,taskid,satisfaction,temporal,query,pageid):
     # print 'view search', query
     srh = SearchResultHub()
     query = urllib.unquote(query)
    # query = query.decode('cp936','ignore').decode('utf8')
 
     # print urllib.quote(query)
-    results = srh.getResult(query, 20*(int(pageid)-1), 20)
+    results = srh.getResult(query, 10*(int(pageid)-1), 10)
+    print type(results)
+    man_results= list()
+    if satisfaction=='SAT':
+        for i in range(0,10,1):
+            man_results.append(results[i])
+    if satisfaction=='MIDSAT':
+        for i in range(0,5,1):
+            man_results.append(results[4-i])
+        for i in range(5,10,1):
+            man_results.append(results[i])
+    if satisfaction =='UNSAT':
+        for i in range(0,10,1):
+            man_results.append(results[9-i])
     results_count = srh.getCount(query)
-    max_pageid = results_count / 20
-    if expType=='exp':
+    print man_results
+    max_pageid = results_count / 10
+    if temporal=='HIGH':
         t = template.Template(open('templates/outexplicit.html').read())
-    else:
+    if temporal == 'LOW':
         t = template.Template(open('templates/outimplicit.html').read())
     next_pageid = ''
     if int(pageid) < max_pageid:
         next_pageid = str(int(pageid)+1)
     page_str = ''.join([str(x) for x in range(1, max_pageid+1)])
-    c = template.Context({'resultlist': [r.content for r in results],
+    c = template.Context({'resultlist': [r.content for r in man_results],
                           'taskid': taskid,
                           'query': query,
                           'pageid': pageid,
                           'page_str': page_str,
-                          'next_pageid': next_pageid})
+                          'next_pageid': next_pageid,
+                          'satisfaction':satisfaction,
+                          'temporal':temporal})
     # fout = open('temp/test.html','w')
     # fout.write(t.render(c).decode('utf8','ignore').encode('utf8'))
     # fout.close()
@@ -72,31 +87,41 @@ def login(request):
     html = template.Template(open('templates/login.html').read())
     c = template.Context({'allsettings':allsettings})
     respon = HttpResponse(html.render(c))
-
-
-
     return HttpResponse(respon)
 
 def tasks(request, sID,settingId):
     settings = Setting.objects.filter(idx=int(settingId))
     tlist = list()
+     # tlist = (taskid, query,audiofile,option,temporal)
     for s in settings:
-        taskidx =
-    tlist = list(Task.objects.filter(task_id__lte=12))
-    if sID == '2013310564':
+        _listitem = [0,'','','','','']
+        temporal = s.temporal
+        option= s.option
+        taskidx = s.taskidx
+        query = Task.objects.get(task_id = taskidx).init_query
+        audiofile = Task.objects.get(task_id = taskidx).audiofilename
+
+        if option=='HIDDEN':
+            continue
+        else:
+            _listitem[3]= option
+            _listitem[0] = taskidx
+            _listitem[1] = query
+            _listitem[2] = audiofile
+            _listitem[4] = temporal
+            tlist.append(_listitem)
+    if sID == '0123456789':
         tlist = [Task.objects.get(task_id=13)]
     random.seed(int(sID))
     random.shuffle(tlist)
     print 'len tlist', len(tlist)
-    for t in tlist:
-        print t.task_id
+
     html = template.Template(open('templates/tasks.html').read())
 
     c = template.Context({'tasks':tlist,'tasknum':len(tlist)})
 
     respon = HttpResponse(html.render(c))
 
-    respon.set_cookie('expType', value=expType, max_age=None, expires=None, path='/', domain=None, secure=None)
     respon.set_cookie('studentID', value=sID, max_age=None, expires=None, path='/', domain=None, secure=None)
 
     return respon
@@ -119,8 +144,10 @@ def annotation(request, taskid):
     except:
         return HttpResponse('ERROR: UNKNOWN STUDENT ID')
     lh = LogHub()
-    results = lh.getClickedResults(studentID, taskid)
-    # print 'len result:', len(results)
+
+    results = lh.getClickedResults(studentID, int(taskid))
+    print 'len result for annotation:', len(results)
+
     t = template.Template(open('templates/annotation.html').read())
     c = template.Context({'resultlist': [r.content for r in results],
                           'taskid': taskid})
@@ -142,7 +169,6 @@ def description(request, task_id, init_query):
 
 
 def taskreview(request,taskid):
-
     try:
         studentID = request.COOKIES['studentID']
     except:
@@ -150,12 +176,14 @@ def taskreview(request,taskid):
     lh = LogHub()
     currTask = Task.objects.get(task_id =int(taskid))
     query = currTask.init_query
+    question = currTask.question
     results = lh.getClickedResults(studentID, taskid)
     # print 'len result:', len(results)
     t = template.Template(open('templates/taskreview.html').read())
     c = template.Context({'resultlist': [r.content for r in results],
                           'taskid': taskid,
-                          'query': query})
+                          'query': query,
+                          'question':question})
     return HttpResponse(t.render(c))
 @csrf_exempt
 def log(request):
@@ -183,10 +211,10 @@ def log_session_annotation(request):
 
 
 @csrf_exempt
-def log_questionnaire(request):
+def log_outcome(request):
     message = urllib.unquote(request.POST[u'message'])
     # print message
-    QuestionnaireLogParser.insertMessageToDB(message)
+    OutcomeLogParser.insertMessageToDB(message)
     return HttpResponse('OK')
 
 @csrf_exempt
@@ -194,4 +222,11 @@ def log_query_satisfaction(request):
     message = urllib.unquote(request.POST[u'message'])
     # print message
     QuerySatisfactionLogParser.insertMessageToDB(message)
+    return HttpResponse('OK')
+
+@csrf_exempt
+def log_timeest(request):
+
+    message = urllib.unquote(request.POST[u'message'])
+    TimeEstLogParser.insertMessageToDB(message)
     return HttpResponse('OK')

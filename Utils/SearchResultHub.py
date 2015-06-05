@@ -15,25 +15,17 @@ class SearchResultHub:
         pass
 
     def getResult(self, query, beginIndex, number):
-
         print 'searching in database'
-
         queries = Query.objects.filter(content=query)
-
         if len(queries) ==0:
             q = Query(content=query,resultnum=0,recomm='',lastcrawledpage=0,stopCrawl=0)
         else:
             q = queries[0]
-
-
-
         src = SearchResultCrawler()
         srpp = SearchResultPageParser()
         results = list()
         crawlIndex =q.lastcrawledpage+1
         resultnum = q.resultnum
-
-
         if resultnum <=beginIndex+number or resultnum< beginIndex+2*number:
             if q.stopCrawl == 1:
                 print 'STOP CRAWLING'
