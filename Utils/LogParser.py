@@ -30,6 +30,10 @@ def getRankOfClickResult(line):
     rank = int(click_info_patterns['rank'].search(info).group(1))
     print (page-1)*10 + rank
     return (page-1)*10 + rank
+def getIdOfClickResult(line):
+    p = re.compile('(rb_\d.*?)')
+    print p.search(line).group()
+    return p.search(line).group()
 
 
 @transaction.commit_manually
