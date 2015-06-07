@@ -79,7 +79,7 @@
     <p align="center" style="font-size:16px" color="red">当前共有{{ tasknum }}个查询任务</p>
 
     <p align="center" style="font-size:16px" color="red">
-        对于每一个查询任务，你需要用一个查询寻找相关的信息。请注意，在开始查询前，请听一段录音，帮助你理解查询背后具体的信息需求。</p>
+        对于每一个查询任务，你需要用一个查询寻找相关的信息。请注意，在开始查询前，请听一段录音，帮助你理解查询背后具体的信息需求。每一段录音你最多可以听2遍。</p>
 </div>
 <div class="annotation_list">
     {% for item in tasks %}
@@ -91,6 +91,13 @@
 
                 <p>查询： {{ item.1 }}</p>
                 <span>任务描述：</span><span>
+
+                <audio controls="controls">
+                <source src="/{{ item.2 }}" type="audio/mp3"/>
+            </audio>
+
+            </span>
+                <span>
 
                 <audio controls="controls">
                 <source src="/{{ item.2 }}" type="audio/mp3"/>
