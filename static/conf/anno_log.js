@@ -165,7 +165,34 @@ function click_on_submittimeestimation(){
     }
 }
 
+function click_on_submittimeestimation_quiet(){
+    var text = $("#time").html();
+    var message = "";
+    var client_time = (new Date()).getTime();
+    message += "TIMESTAMP=" + client_time;
+    message += "\tUSER=" + studentID;
+    message += "\tTASK=" + currentTaskID;
+    message += "\tACTION=DESCRIPTION";
+    message += "\tINFO:";
+    message += "\ttime=" + text + "\n";
+    var log_url = "http://" + server_site + ":8000/TimeEstService/";
+    $.ajax({
+        type: 'POST',
+        url: log_url,
+        data: {message: message},
+        async: false,
+        complete: function (jqXHR, textStatus) {
+            //alert(textStatus + "----" + jqXHR.status + "----" + jqXHR.readyState);
+            //should we reset onbeforeunload here?
+            console.log(text)
+            console.log("synchronously flush time estimation")
+        }
+    });
+    window.onbeforeunload = null;
+}
+
 function click_on_submitoutcome(){
+    click_on_submittimeestimation_quiet();
     var text = $("#answer").val();
     var message = "";
     var client_time = (new Date()).getTime();
