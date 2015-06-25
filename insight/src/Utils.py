@@ -10,8 +10,9 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 def loadValidUsers():
     u2config = dict()
-    for l in open('../data/validusers.txt'):
-        u,config = l.strip().split('\t')
+    for l in open('../data/validusers.txt').readlines():
+
+        u,config = l.strip().split(' ')
         u2config[u] = config
     return u2config.keys(),u2config
 
@@ -26,11 +27,13 @@ def dwelltimeextraction():
     validusers, u2config= loadValidUsers()
 
     dwelltime = defaultdict(lambda:defaultdict(lambda:[9433658019765,1,9433658019765]))
-    # cx = sqlite3.connect("../data/db.sqlite3.20150615")
-    # cu = cx.cursor()
-    # cu.execute('select * from anno_outcome')
-    for l in open('../data/anno_log.csv').readlines()[1:]:
-        logitem = l.strip().split(';')
+    cx = sqlite3.connect("../../db.sqlite3")
+    cu = cx.cursor()
+    cu.execute('select * from anno_log')
+    while True:
+        logitem  = cu.fetchone()
+        if logitem == None:
+            break
         studentid = logitem[1]
         taskid = logitem[2]
         action = logitem[3]
@@ -60,7 +63,7 @@ def dwelltimeextraction():
 def satisfactionextraction():
     validusers, u2config= loadValidUsers()
     satisfaction = defaultdict(lambda:defaultdict(lambda:-1))
-    cx = sqlite3.connect('../../db.0616.sqlite3')
+    cx = sqlite3.connect('../../db.sqlite3')
     cu = cx.execute('select * from anno_querysatisfaction')
     while True:
         logsat = cu.fetchone()
@@ -81,7 +84,7 @@ def satisfactionextraction():
 def numofClicksExtraction():
     validusers, u2config= loadValidUsers()
     numofclicks = defaultdict(lambda:defaultdict(lambda:0))
-    cx = sqlite3.connect('../../db.0616.sqlite3')
+    cx = sqlite3.connect('../../db.sqlite3')
     cu = cx.execute('select * from anno_log')
     while True:
         logitem = cu.fetchone()
@@ -104,7 +107,7 @@ def numofClicksExtraction():
 def estimateTimeExtraction():
     validusers, u2config= loadValidUsers()
     timeestimation = defaultdict(lambda:defaultdict(lambda:0))
-    cx = sqlite3.connect('../../db.0616.sqlite3')
+    cx = sqlite3.connect('../../db.sqlite3')
     cu = cx.execute('select * from anno_timeestimation')
     while True:
         logitem = cu.fetchone()
@@ -146,6 +149,7 @@ def analysisDwellTime():
     validusers, u2config= loadValidUsers()
 
 
+
     for l in open('../data/dwelltime.txt').readlines():
         studentid,taskid,_,_,_,dtime = l.strip().split('\t')
         configid = u2config[studentid]
@@ -158,7 +162,7 @@ def analysisDwellTime():
         cg = (config[configid][taskid][0])
         bysat[taskid][cg].append(int(dtime))
 
-    fout = open('../data/dwelltime_bysat.csv','w')
+    fout = open('../data/dwelltime/dwelltime_bysat.csv','w')
     fout.write('taskid,SAT,MIDSAT,UNSAT\n')
     for t in bysat.keys():
         fout.write(t+',')
@@ -166,7 +170,7 @@ def analysisDwellTime():
         fout.write('\n')
     fout.close()
 
-    fout = open('../data/dwelltime_bytemporal.csv','w')
+    fout = open('../data/dwelltime/dwelltime_bytemporal.csv','w')
     fout.write('taskid,HIGH,LOW\n')
     for t in bytemporal.keys():
         fout.write(t+',')
@@ -174,7 +178,7 @@ def analysisDwellTime():
         fout.write('\n')
     fout.close()
 
-    fout = open('../data/dwelltime_byjoin.csv','w')
+    fout = open('../data/dwelltime/dwelltime_byjoin.csv','w')
 
     cfgs = list(byjoin['1'].keys())
 
@@ -210,7 +214,7 @@ def analysisSatisfaction():
         cg = (config[configid][taskid][0])
         bysat[taskid][cg].append(int(satis))
 
-    fout = open('../data/satisfaction_bysat.csv','w')
+    fout = open('../data/satisfaction_raw/satisfaction_bysat.csv','w')
     fout.write('taskid,SAT,MIDSAT,UNSAT\n')
     for t in bysat.keys():
         fout.write(t+',')
@@ -218,7 +222,7 @@ def analysisSatisfaction():
         fout.write('\n')
     fout.close()
 
-    fout = open('../data/satisfaction_bytemporal.csv','w')
+    fout = open('../data/satisfaction_raw/satisfaction_bytemporal.csv','w')
     fout.write('taskid,HIGH,LOW\n')
     for t in bytemporal.keys():
         fout.write(t+',')
@@ -226,7 +230,7 @@ def analysisSatisfaction():
         fout.write('\n')
     fout.close()
 
-    fout = open('../data/satisfaction_byjoin.csv','w')
+    fout = open('../data/satisfaction_raw/satisfaction_byjoin.csv','w')
 
     cfgs = list(byjoin['1'].keys())
 
@@ -241,7 +245,6 @@ def analysisSatisfaction():
             fout.write(','+str(mean( byjoin[t][_c])))
         fout.write('\n')
     fout.close()
-
 
 
 def analysisNumOfClicks():
@@ -264,7 +267,7 @@ def analysisNumOfClicks():
         cg = (config[configid][taskid][0])
         bysat[taskid][cg].append(int(satis))
 
-    fout = open('../data/numofclicks_bysat.csv','w')
+    fout = open('../data/numofclicks/numofclicks_bysat.csv','w')
     fout.write('taskid,SAT,MIDSAT,UNSAT\n')
     for t in bysat.keys():
         fout.write(t+',')
@@ -272,7 +275,7 @@ def analysisNumOfClicks():
         fout.write('\n')
     fout.close()
 
-    fout = open('../data/numofclicks_bytemporal.csv','w')
+    fout = open('../data/numofclicks/numofclicks_bytemporal.csv','w')
     fout.write('taskid,HIGH,LOW\n')
     for t in bytemporal.keys():
         fout.write(t+',')
@@ -280,7 +283,7 @@ def analysisNumOfClicks():
         fout.write('\n')
     fout.close()
 
-    fout = open('../data/numofclicks_byjoin.csv','w')
+    fout = open('../data/numofclicks/numofclicks_byjoin.csv','w')
 
     cfgs = list(byjoin['1'].keys())
 
@@ -339,7 +342,7 @@ def analysisTimeEstimation():
         estbysat[taskid][cg].append(int(etime)*1000)
 
 
-    fout = open('../data/Etime_Dtime_bysat.csv','w')
+    fout = open('../data/EtimeDtime/Etime_Dtime_bysat.csv','w')
     fout.write('taskid,SAT-Dtime,SAT-Etime,MIDSAT-Dtime,MIDSAT-Etime,UNSAT-Dtime,UNSAT-Etime\n')
     for t in bysat.keys():
         fout.write(t+',')
@@ -347,7 +350,7 @@ def analysisTimeEstimation():
         fout.write('\n')
     fout.close()
 
-    fout = open('../data/Etime_Dtime_bytemporal.csv','w')
+    fout = open('../data/EtimeDtime/Etime_Dtime_bytemporal.csv','w')
     fout.write('taskid,HIGH-Dtime,HIGH-Etime,LOW-Dtime,LOW-Etime\n')
     for t in bytemporal.keys():
         fout.write(t+',')
@@ -355,24 +358,100 @@ def analysisTimeEstimation():
         fout.write('\n')
     fout.close()
 
-    fout = open('../data/Etime_Dtime_byjoin.csv','w')
+    fout = open('../data/EtimeDtime/Etime_Dtime_byjoin.csv','w')
 
     cfgs = list(byjoin['1'].keys())
 
     fout.write('taskid')
     for _c in cfgs:
-        print _c
+
         fout.write(','+_c[0]+'+'+_c[1]+'-'+'Dtime')
         fout.write(','+_c[0]+'+'+_c[1]+'-'+'Etime')
     fout.write('\n')
+    sum = 0
     for t in bytemporal.keys():
         fout.write(t)
         for _c in cfgs:
+            sum +=len(byjoin[t][_c])
             fout.write(','+str(mean( byjoin[t][_c]))+','+str(mean(estbyjoin[t][_c])))
         fout.write('\n')
+    print sum
     fout.close()
 
-analysisDwellTime()
-analysisSatisfaction()
-analysisNumOfClicks()
-analysisTimeEstimation()
+def checkUserExsitance():
+    validusers, u2config= loadValidUsers()
+
+    exsit  = defaultdict(lambda:'no')
+    cx = sqlite3.connect("../../db.sqlite3")
+    cu = cx.cursor()
+    cu.execute('select * from anno_log')
+    while True:
+        logitem  = cu.fetchone()
+        if logitem == None:
+            break
+        studentid = logitem[1]
+        taskid = logitem[2]
+        action = logitem[3]
+        content = logitem[5]
+        exsit[studentid] = 'yes'
+    fout = open('../data/validusers2.txt','w')
+    for u in validusers:
+        fout.write(u+' '+u2config[u]+' '+exsit[u]+'\n')
+    fout.close()
+#
+# dwelltimeextraction()
+# satisfactionextraction()
+# numofClicksExtraction()
+# estimateTimeExtraction()
+#
+# analysisDwellTime()
+# analysisSatisfaction()
+# analysisNumOfClicks()
+# analysisTimeEstimation()
+
+def outcomeExtaction():
+    validusers, u2config= loadValidUsers()
+
+    outcome = defaultdict(lambda:defaultdict(lambda:''))
+    cx = sqlite3.connect("../../db.sqlite3")
+    cu = cx.cursor()
+    cu.execute('select * from anno_outcome')
+    fout = open('../data/outcome.txt','w')
+    while True:
+        logitem = cu.fetchone()
+        if logitem == None:
+            break
+        else:
+            studentid = logitem[1]
+            taskid = logitem[2]
+            content= logitem[3]
+            if studentid in validusers:
+                fout.write('\t'.join([str(item) for item in [studentid,taskid,content]])+'\n')
+    fout.close()
+def individualHabit():
+    validusers, u2config= loadValidUsers()
+    estimatime = defaultdict(lambda:defaultdict(lambda:0))
+    for l in open('../data/timeestimation.csv'):
+        sid,tid,time = l.strip().split(',')
+        estimatime[sid][tid] = int(time)*1000
+    actualtime = defaultdict(lambda:defaultdict(lambda:0))
+    for l in open('../data/dwelltime.txt'):
+
+        sid,tid,_,_,_,time = l.strip().split('\t')
+        actualtime[sid][tid] = int(time)
+    userhabit = defaultdict(lambda:[0,0])
+    for s in validusers:
+        for t in estimatime[s].keys():
+            print estimatime[s][t] , actualtime[s][t]
+            if estimatime[s][t] > actualtime[s][t]:
+                userhabit[s][0]+=1
+            else:
+                userhabit[s][1]+=1
+    fout = open('../data/userhabit.csv','w')
+    fout.write('user,config,Estimate Time > Actual Time, Actual Time > Estimate Time\n')
+    for s in validusers:
+        fout.write(','.join([str(item) for item in [s,u2config[s],userhabit[s][0],userhabit[s][1]]]))
+        fout.write('\n')
+outcomeExtaction()
+
+individualHabit()
