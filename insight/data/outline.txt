@@ -1,0 +1,18 @@
+三个研究问题：
+
+1. 在High Temporal Relevance 和Low Temporal Relevance的设置下，两种用户行为有什么差别?
+	1.1 Satisfaction?
+	会降低用户的满意，和用户的时间感知是有关的，进一步证明，结果的relevance会对temporal relevance产生影响，查询里面本身有一些time critical 的查询，会影响temporal relevance。
+	1.2 Success
+	
+	1.3 Perceived Effort(time)
+	会让估计的时间变长
+2. 在不同的Satisfaction 程度下，用户行为有什么差别？
+	2.1 Perceived Effort(time)
+
+	
+3. 在不同的task type 中，用户的行为有什么差别？
+	3.1 用户在time critical的search中，在一些基本的指标（ effort,gain）上有啥差异？
+	3.2 用户在time critical的search中，感知时间方面有啥差异？
+
+	

@@ -192,7 +192,7 @@ function click_on_submittimeestimation_quiet(){
 }
 
 function click_on_submitoutcome(){
-    click_on_submittimeestimation_quiet();
+
     var text = $("#answer").val();
     var message = "";
     var client_time = (new Date()).getTime();
@@ -220,6 +220,7 @@ function click_on_submitoutcome(){
         location.href = "/annotation/" + currentTaskID + "/";
 
     }
+    click_on_submittimeestimation_quiet();
 }
 
 function over_button_on_click() {
