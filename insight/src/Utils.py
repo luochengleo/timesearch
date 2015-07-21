@@ -399,15 +399,15 @@ def checkUserExsitance():
         fout.write(u+' '+u2config[u]+' '+exsit[u]+'\n')
     fout.close()
 #
-# dwelltimeextraction()
-# satisfactionextraction()
-# numofClicksExtraction()
-# estimateTimeExtraction()
+dwelltimeextraction()
+satisfactionextraction()
+numofClicksExtraction()
+estimateTimeExtraction()
 #
-# analysisDwellTime()
-# analysisSatisfaction()
-# analysisNumOfClicks()
-# analysisTimeEstimation()
+analysisDwellTime()
+analysisSatisfaction()
+analysisNumOfClicks()
+analysisTimeEstimation()
 
 def outcomeExtaction():
     validusers, u2config= loadValidUsers()
