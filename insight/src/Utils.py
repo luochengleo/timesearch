@@ -398,7 +398,7 @@ def checkUserExsitance():
     for u in validusers:
         fout.write(u+' '+u2config[u]+' '+exsit[u]+'\n')
     fout.close()
-#
+'''
 dwelltimeextraction()
 satisfactionextraction()
 numofClicksExtraction()
@@ -408,7 +408,7 @@ analysisDwellTime()
 analysisSatisfaction()
 analysisNumOfClicks()
 analysisTimeEstimation()
-
+'''
 def outcomeExtaction():
     validusers, u2config= loadValidUsers()
 
@@ -452,6 +452,6 @@ def individualHabit():
     for s in validusers:
         fout.write(','.join([str(item) for item in [s,u2config[s],userhabit[s][0],userhabit[s][1]]]))
         fout.write('\n')
-outcomeExtaction()
 
-individualHabit()
+# outcomeExtaction()
+# individualHabit()
